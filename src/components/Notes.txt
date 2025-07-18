@@ -1,0 +1,52 @@
+//for status column 
+
+import { Chip } from "@mui/material";
+
+const columns = [
+  {
+    field: 'status',
+    headerName: 'Status',
+    width: 130,
+    cellClassName: (params) =>
+      params.value === 'Active' ? 'cell-active' : 'cell-inactive',
+  },
+];
+
+
+//Add component in a cell
+
+import { DataGrid } from '@mui/x-data-grid';
+import Button from '@mui/material/Button';
+
+const columns = [
+  { field: 'id', headerName: 'ID', width: 90 },
+  { field: 'name', headerName: 'Name', width: 150 },
+  { field: 'age', headerName: 'Age', width: 110 },
+  {
+    field: 'actions',
+    headerName: 'Actions',
+    width: 150,
+    renderCell: (params) => (
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => alert(`Row ID: ${params.id}`)}
+      >
+        Click Me
+      </Button>
+    ),
+  },
+];
+
+const rows = [
+  { id: 1, name: 'Priyanshu', age: 24 },
+  { id: 2, name: 'Ankit', age: 28 },
+];
+
+export default function App() {
+  return (
+    <div style={{ height: 400, width: '100%' }}>
+      <DataGrid rows={rows} columns={columns} pageSize={5} />
+    </div>
+  );
+}
