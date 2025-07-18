@@ -1,50 +1,63 @@
 import { DataGrid } from "@mui/x-data-grid";
 import Dropdown from "./components/Dropdown";
-import { Chip } from "@mui/material";
 import TableStatus from "./components/TableStatus";
-
+import { Box } from "@mui/material";
 
 const columns = [
   {
     field: "buyer",
     headerName: "Buyer",
+    flex: 5,
     renderCell: (params) => <>{params.value}</>,
   },
   {
     field: "offer_received",
     headerName: "Offer received",
+    flex:2,
     renderCell: (params) => <>{params.value}</>,
   },
   {
     field: "status",
     headerName: "Status",
+    flex:2,
     renderCell: (params) => <TableStatus status={params.value} />,
   },
   {
     field: "total_offer_value",
     headerName: "Total Offer value",
+    flex:3,
     renderCell: (params) => <>{params.value}</>,
   },
   {
     field: "ask_price",
     headerName: "+/- to Ask Price",
+    flex:2,
     renderCell: (params) => (
-      <span className={`${parseFloat(params.value) > 0 ? 'text-[#039855]' : 'text-[#FA3527]'}`}>{params.value}</span>
+      <span
+        className={`${
+          parseFloat(params.value) > 0 ? "text-[#039855]" : "text-[#FA3527]"
+        }`}
+      >
+        {params.value}
+      </span>
     ),
   },
   {
     field: "avg_offer",
     headerName: "Avg. Offer (ea)",
+    flex:2,
     renderCell: (params) => <>{params.value}</>,
   },
   {
     field: "offer_expiry",
     headerName: "Offer expiry",
+    flex:3,
     renderCell: (params) => <>{params.value}</>,
   },
   {
     field: "action",
     headerName: "Action",
+    flex:3,
     renderCell: () => <Dropdown />,
   },
 ];
@@ -109,20 +122,21 @@ const rows = [
 
 export default function App() {
   return (
-    <DataGrid
-      rows={rows}
-      columns={columns}
-      hideFooter
-      disableRowSelectionOnClick
-      sx={{
-        "& .MuiDataGrid-columnHeaders": {
-          color: "#475467", // text color
-          fontWeight: "500", // bold text
-          fontSize: "12px", // font size
-          fontFamily: "Inter, sans-serif", // font family
-          backgroundColor: "#F9FAFB", // background color
-        },
-      }}
-    />
+    <Box width={1} >
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        hideFooter
+        disableRowSelectionOnClick
+        sx={{
+          "& .MuiDataGrid-columnHeaders": {
+            color: "#475467",
+            fontWeight: "500",
+            fontSize: "12px",
+            backgroundColor: "#F9FAFB",
+          },
+        }}
+      />
+    </Box>
   );
 }

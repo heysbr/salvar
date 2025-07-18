@@ -4,5 +4,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manufacturing+Consent:wght@400;500;600;700&display=swap');
 
 body {
-    font-family: 'Inter', s-s'Manufacturing Consent', sanerif;
+    font-family: 'Inter', 'Manufacturing Consent', sans-serif;
+    color: blue;
 }
